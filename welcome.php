@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>CSC155 001DR Survey Thing</title>
+<title>Ryan Donaldson CSC155 001DR Survey Thing</title>
+<!--  rdonaldson6 -->
 <?php
 
 require ('library/functions.php');
