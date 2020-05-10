@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="library/styles.css">
+<link rel="stylesheet" type="text/css" href="library/style.css">
 <?php
 require ('library/functions.php');
 
