@@ -1,8 +1,9 @@
-
+*{
+    background-color: #495C70;
+}
 div.form
 {
     display: block;
-    text-align: center;
 }
 #form
 {

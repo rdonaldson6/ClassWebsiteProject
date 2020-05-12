@@ -35,7 +35,8 @@ function checkAccount($zone)
     Connect to Database
 ============================================================*/
 function getDBConnection()                                                               
-{                                                                   $servername = "localhost";
+{                                                                   
+    $servername = "localhost";
     $username = "rdonaldson6";
     $password = "rdonaldson6";
     $dbname = "rdonaldson6";                                                                                        
@@ -88,6 +89,15 @@ function printUserTable($conn){
     echo "<th>E-mail</th>";
     echo "<th>Encrypted Password</th>";
     echo "<th>User Group</th>";
+    
+    // 20-060 show address1, address2, city, state, zipcode
+    echo "<th>Address 1</th>";
+    echo "<th>Address 2</th>";
+    echo "<th>City, State, Zipcode</th>";
+    
+    // 20-070 Show create and modified
+    echo "<th>Created</th>";
+    echo "<th>Modified</th>";
     echo "</tr>";
     if ($result->num_rows > 0)
     {
@@ -100,6 +110,17 @@ function printUserTable($conn){
             echo "<td>".$row["email"]."</td>";
             echo "<td>".$row["encrypted_password"]."</td>";
             echo "<td>".$row["usergroup"]."</td>";
+            
+            // 20-060 show address1, address2, city, state, zipcode
+            echo "<td>".$row["address1"]."</td>";
+            echo "<td>".$row["address2"]."</td>";
+            echo "<td>".$row["city"].",".$row["state"]." ".$row["zipcode"]. "</td>";
+            
+            // 20-070 Show create and modified
+            echo "<td>".$row["created"]."</td>";
+            echo "<td>".$row["dateModified"]."</td>";
+
+            
         echo "<tr>";
         }
     }
@@ -114,7 +135,7 @@ function printUserTable($conn){
 ============================================================*/
 function checkAndStoreLogin( $conn, $usernameToTest, $passwordToTest )
 {
-    $result=lookupUserName($conn, $usernameToTest);
+    $result=lookupusername($conn, $usernameToTest);
     if ($result != FALSE)
     {
         $row = $result->fetch_assoc();
@@ -129,7 +150,7 @@ function checkAndStoreLogin( $conn, $usernameToTest, $passwordToTest )
     return FALSE;
 }
 
-function lookUpUserName($conn, $usernameToFind){
+function lookUpusername($conn, $usernameToFind){
     
        $sql = "SELECT * FROM users WHERE username=? ;"; // SQL with parameters
         $stmt = $conn->prepare($sql);

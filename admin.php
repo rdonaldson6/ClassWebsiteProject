@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Admin</title>
-    <link rel='stylesheet' type='text/css' href='style.css'>
-</head>
+<?php  require "header.php" ?>
 <body>
    
-    <?php echo "<p>Hello,".$_SESSION['Username']."</p>" ?>
+    <?php echo "<p>Hello Admin,".$_SESSION['username']."</p>" ?>
 </body>
-</html>
+<?php  require "footer.php" ?>
