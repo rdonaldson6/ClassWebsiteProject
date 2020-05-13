@@ -23,21 +23,38 @@
                         displayError("Passwords don't match");   
                     }else{
                         // Prepare the SQL Statement 
-                        $stmt = $conn->prepare("INSERT INTO users (username, first_name,last_name,encrypted_password, usergroup, email,created) VALUES (?, ?, ?, ?, ?, ?, ?)" );
-
+                        //  address1,address2, city, state, zipcode
+                        // 12
+                        $stmt = $conn->prepare("INSERT INTO users (username,first_name,last_name,encrypted_password,usergroup,email,created,address1,address2, city, state, zipcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                        
+                        // mistake here??
                         //Bind Parameters to previous statement
-                        // "ssssssi" is a format string
-                        $stmt->bind_param("ssssssi", $username, $first_name, $last_name, $encrypted_password, $usergroup, $email, $created);
+                        // "ssssssisssi" is a format string
+                        $stmt->bind_param("sssssssssssi", 
+                                          $username, 
+                                          $first_name, 
+                                          $last_name, $encrypted_password, $usergroup, 
+                                          $email,
+                                          $created,
+                                          $address1,
+                                          $address2, 
+                                          $city, 
+                                          $state,
+                                          $zipcode);
 
                         // Set variables that are binded
                         $username=$_POST['Username'];
                         $first_name=$_POST['firstname'];
-                        $last_name=$_POST['lastname'];
-                        $encrypted_password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $last_name=$_POST['lastname']; $encrypted_password=password_hash($_POST['password'], PASSWORD_DEFAULT);
                         $usergroup=$_POST['user_group'];
                         $email=$_POST['email'];
-                        $created="CURRENT_TIMESTAMP()";
-
+                        $created=date('Y/m/d h:i:s', time());
+                        $address1=$_POST['address1'];
+                        $address2=$_POST['address2'];
+                        $city=$_POST['city'];
+                        $state=$_POST['state'];
+                        $zipcode=$_POST['zipcode'];
+                        
  /*====================================================
      Execute the sql statement
  =====================================================*/
@@ -84,18 +101,19 @@
             
                    <ul class="btn_radio">
                         <li><input type="radio" id="user" class="radio" name="user_group"  value="user" <?php if(isset($_POST['user_group'])){echo 'checked="checked"';}?> checked>
-                            <label for="user">User</label><br></li>
+                            <label class="radio" for="user">User</label><br></li>
 
                         <li><input type="radio" id="admin" class="radio" name="user_group" value="admin" <?php if(isset($_POST['user_group']) ){echo 'checked="checked"';}?>>
-                            <label for="admin">Admin</label><br></li>
+                            <label class="radio" for="admin">Admin</label><br></li>
 
                         <li><input type="radio" id="su" class="radio" name="user_group" value="su" <?php if(isset($_POST['user_group']) ){echo 'checked="checked"';}?>>
-                        <label for="su">Su</label><br></li>
+                        <label class="radio" for="su">Su</label><br></li>
                     </ul>
                 
             </div>
 <!-- =========================================
             New Fields for 20-060
+            address1,address2, city, state, zipcode
 ============================================-->
             <label for='address1'>Address 1:</label>
             <input type='text' id='address1' name='address1' value='<?php echo showPost("address1")?>' ><br>

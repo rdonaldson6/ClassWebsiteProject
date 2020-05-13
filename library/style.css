@@ -1,21 +1,25 @@
-body{
-    --main-bg-color: #495C70;
-    --table-form-color:  #69829d;
-    --table-header-color: #494970;
-}
-
 *{
+    
     background-color: var(--main-bg-color);
     color: aliceblue;
     text-align: center;
 }
 
-p{
-    background-color: var(--table-form-color);
+/* ==============================================
+    Define CSS variables for easy color change
+============================================== */
+body{
+    --main-bg-color: #003b6f;
+    --form-table-bg: #64769d;
+    --form-table-heading: #34244b;
+    
 }
-/* ==========================================================================
+p{
+    background-color: var(--form-table-bg);
+}
+/* :==========================================================
 TABLE CSS
-========================================================================== */
+============================================================= */
 table {
   border-collapse: collapse;
   border-radius: 6px 6px 6px 6px;
@@ -30,80 +34,61 @@ th, td {
 }
 
 th{
-	background-color: var(--table-header-color);
+	background-color:     var(--form-table-heading);
+;
     margin: 0px;
     padding: 10px;
 }
 td{    
-    background-color: var(--table-form-color);
+    background-color: var(--form-table-bg);
     padding: 10px;
 }
 
 
 
-/* ==========================================================================
+/* =====================================================
 FORM CSS
-========================================================================== */
+===================================================== */
 div.form
 {
-    
     display: block;
     text-align: center;
-    border: 5px outset var(--table-header-color: #494970);
     
 }
 form
 {
-    width: 500px;
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    background-color: var(--table-form-color);
+    background-color: var(--form-table-bg);
     padding: 10px;
-    border: 5px outset var(--table-header-color: #494970);
 }
 
 label{
-      background-color: var(--table-form-color);  
-      display: inline-block;
-      width: 140px;
-      text-align: center;
-      padding-bottom: 3px;
-}
-input{
-    width: 200px;
-    padding-bottom: 5px;
-    margin-bottom: 3px;
-    text-align: left;
+  background-color: var(--form-table-bg);  
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  padding-bottom: 3px;
 }
 
-input[type=button], input[type=submit], input[type=reset]{
-    width: 49%;
-    
+input{
+    width: 200px;
+    padding-bottom: 3px;
 }
 
 ul{
-   list-style-type: none;
-   background-color: var(--table-form-color);
+    list-style: none;
+    background-color: var(--form-table-bg);
     text-align: center;
 }
+
 li{
-    background-color: var(--table-form-color);
-    float: left;
-    width: 30%;
-}
-div.radioContainer{
-    display: flex;
-    text-align: center;
-    background-color: var(--table-form-color);
+    background-color: var(--form-table-bg);
+    
 }
 
 .radio{
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: var(--table-form-color);
+    width: 20px;
 }
